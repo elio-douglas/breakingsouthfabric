@@ -1,0 +1,14 @@
+[
+  {
+    "name": "sportsanalytics",
+    "path": "/Files",
+    "target": {
+      "type": "AzureBlobStorage",
+      "azureBlobStorage": {
+        "connectionId": "7e0b7878-7c04-4315-a226-ee94869af2bd",
+        "location": "https://breakingsouthsa.blob.core.windows.net",
+        "subpath": "/sportsanalytics"
+      }
+    }
+  }
+]

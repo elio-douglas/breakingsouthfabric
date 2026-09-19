@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "sportsanalytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "22ea209d-3cfa-b048-45f0-c232758791c1"
+  }
+}
