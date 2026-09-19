@@ -8,6 +8,13 @@
     <ModelCollation>1033, CS</ModelCollation>
     <DefaultCollation>Latin1_General_100_BIN2_UTF8</DefaultCollation>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="football" />
+    <Folder Include="football\Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="PreDeployment.sql" />
+  </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
   </Target>
