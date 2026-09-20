@@ -1,5 +1,15 @@
 {
   "dataworkspace.excludedProjects": [
     "sportsanalytics/workspace/sportsanalytics-sql.SQLDatabase/sportsanalytics-sql.sqlproj"
-  ]
+  ],
+  "chat.agentSkillsLocations": {
+    ".agents/skills": false,
+    ".github/skills": false,
+    ".claude/skills": false,
+    "~/.agents/skills": false,
+    "~/.copilot/skills": false,
+    "~/.claude/skills": false,
+    "isolutions.BI.GitHubCopilotCustomizations/.github/skills": true,
+    "~/.vscode/extensions/synapsevscode.synapse-1.26.0/copilot/skills": true
+  }
 }
