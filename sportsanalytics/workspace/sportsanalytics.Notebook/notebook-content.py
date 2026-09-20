@@ -157,16 +157,14 @@ def upload_raw(response, name):
 def create_raw_table(entity: str, table_name: str, nested: bool = False):
     files = notebookutils.fs.ls(f"{abfss_root}/{project}-onelake/{scope}/raw/{entity}")
     latest = max((f for f in files if f.name.endswith(".json")), key=lambda f: f.name)
-    df = spark.createDataFrame(
-            con.sql(f"""
-            SELECT
-                *
-            FROM
-                read_json_auto('{latest.path}')
-        """).df()
-    )
-    df.write.format("delta").mode("overwrite").saveAsTable(f"{project}.{scope}.{table_name}")
-    print(f"Created raw table: {scope}.{table_name}")
+    con.sql(f"""
+        CREATE TABLE {entity} AS
+        SELECT
+            *
+        FROM
+            read_json_auto('{latest.path}')
+    """)
+    print(f"Created table in duckdb memory: {scope}.{table_name}")
 
 # METADATA ********************
 
@@ -199,41 +197,77 @@ for entity in entities:
 
 # CELL ********************
 
-# MAGIC %%sql
-# MAGIC 
-# MAGIC   SELECT
-# MAGIC     ROW_NUMBER() OVER (ORDER BY raw.name) AS id,
-# MAGIC     CASE
-# MAGIC       WHEN raw.name = 'World' THEN 'WD'
-# MAGIC       ELSE raw.code
-# MAGIC     END AS code,
-# MAGIC     raw.name AS name,
-# MAGIC     raw.flag AS flag
-# MAGIC FROM
-# MAGIC     football.latest_countries raw
+df = spark.createDataFrame(con.sql(f"""
+  SELECT
+    ROW_NUMBER() OVER (ORDER BY raw.name) AS id,
+    CASE
+      WHEN raw.name = 'World' THEN 'WD'
+      ELSE raw.code
+    END AS code,
+    raw.name AS name,
+    raw.flag AS flag
+  FROM
+    countries raw
+""").df())
+df.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable("football.raw_countries")
 
 # METADATA ********************
 
 # META {
-# META   "language": "sparksql",
+# META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
 
 # CELL ********************
 
-# MAGIC %%sql
-# MAGIC SELECT
-# MAGIC     league.id                      AS league_id,
-# MAGIC     CAST(season.`start` AS DATE)   AS season_start,
-# MAGIC     CAST(season.`end` AS DATE)     AS season_end,
-# MAGIC     CAST(season.`current` AS BOOLEAN) AS is_current
-# MAGIC FROM
-# MAGIC     football.latest_leagues
-# MAGIC     LATERAL VIEW explode(seasons) t AS season
+df = spark.createDataFrame(con.sql(f"""
+
+  WITH unnest_seasons AS (
+    SELECT
+      raw.league.id AS league_id,
+      unnest(json_extract(raw.seasons, '$')::json[]) AS season
+    FROM
+      leagues AS raw
+  )
+
+  SELECT
+    raw.league.id AS league_id,
+    CAST(unn.season.start AS DATE) AS season_start,
+    CAST(unn.season.end AS DATE) AS season_end,
+    CAST(unn.season.current AS BOOLEAN) AS is_current
+  FROM
+    leagues AS raw
+    INNER JOIN unnest_seasons AS unn ON raw.league.id = unn.league_id
+    
+""").df())
+df.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable("football.raw_seasons")
 
 # METADATA ********************
 
 # META {
-# META   "language": "sparksql",
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df = spark.createDataFrame(con.sql(f"""
+
+  SELECT
+    raw.league.id AS id,
+    raw.league.name AS name,
+    raw.league.type AS type,
+    raw.league.logo AS logo,
+    raw.country.code AS country_code
+  FROM
+    leagues AS raw
+    
+""").df())
+df.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable("football.raw_leagues")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }

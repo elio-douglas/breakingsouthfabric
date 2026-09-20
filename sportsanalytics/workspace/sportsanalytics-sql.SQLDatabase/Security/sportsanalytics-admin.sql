@@ -1,0 +1,6 @@
+CREATE USER [sportsanalytics-admin]
+    WITH SID = 0x0ECCF2EE5F27AF44B8E984F3E08FD924, TYPE = E;
+
+
+GO
+
