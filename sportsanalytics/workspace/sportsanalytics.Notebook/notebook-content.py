@@ -27,7 +27,6 @@
 # CELL ********************
 
 !pip install duckdb
-!pip install deltalake
 
 # METADATA ********************
 
@@ -42,7 +41,6 @@ import requests
 import duckdb
 import json
 from datetime import datetime, timezone
-from deltalake import write_deltalake
 
 # METADATA ********************
 
