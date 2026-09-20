@@ -6,6 +6,7 @@ on:
     paths:
       - 'sportsanalytics/db/sportsanalytics/**'
       - '.github/workflows/deploy-sql.yml'
+  workflow_dispatch: {}
 
 permissions:
   id-token: write
