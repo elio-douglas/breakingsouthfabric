@@ -1,6 +1,6 @@
 CREATE TABLE [football].[leagues]
 (
-  [id] INT NOT NULL PRIMARY KEY,
+  [id] INT NOT NULL,
   [name] VARCHAR(100) NOT NULL,
   [type] VARCHAR(50) NOT NULL,
   [logo] VARCHAR(255) NOT NULL,
