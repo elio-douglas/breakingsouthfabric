@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Name>sportsanalytics</Name>
     <ProjectGuid>{FBA19E60-CAF8-490F-8362-C7FF5209F762}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlDbFabricDatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CS</ModelCollation>
     <DefaultCollation>Latin1_General_100_BIN2_UTF8</DefaultCollation>
   </PropertyGroup>
@@ -13,10 +13,10 @@
     <Folder Include="football\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SqlServer.Dacpacs.DbFabric">
+    <PackageReference Include="Microsoft.SqlServer.Dacpacs.Azure.Master">
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
-      <Version>170.0.0</Version>
+      <Version>160.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Target Name="BeforeBuild">
