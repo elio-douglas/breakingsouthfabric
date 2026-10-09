@@ -30,7 +30,7 @@ table fixture_times
 
 	partition fixture_times = calculated
 		mode: import
-		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( 'football fixtures', "id", 'football fixtures'[time_id] ) ), "hour", CONVERT ( LEFT ( CONVERT ( [id] , STRING ), 2 ), INTEGER ), "minute", CONVERT ( RIGHT ( CONVERT ( [id] , STRING ), 2 ), INTEGER ) )
+		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( fixtures, "id", fixtures[time_id] ) ), "hour", CONVERT ( LEFT ( CONVERT ( [id] , STRING ), 2 ), INTEGER ), "minute", CONVERT ( RIGHT ( CONVERT ( [id] , STRING ), 2 ), INTEGER ) )
 
 	annotation PBI_Id = 393dc3de3a0a4d1db257828fce01f4ca
 

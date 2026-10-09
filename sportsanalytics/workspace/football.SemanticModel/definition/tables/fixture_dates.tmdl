@@ -47,7 +47,7 @@ table fixture_dates
 
 	partition fixture_dates = calculated
 		mode: import
-		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( 'football fixtures', "id", 'football fixtures'[date_id] ) ), "year", QUOTIENT ( [id], 10000) , "month", MOD (  QUOTIENT ( [id], 100 ), 100 ), "period", FORMAT ( DATE ( QUOTIENT([id], 10000 ), MOD ( QUOTIENT ( [id], 100 ), 100 ), MOD ( [id], 100 ) ), "MMM-yyyy" ), "day", MOD ( [id], 100 ) )
+		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( fixtures, "id", fixtures[date_id] ) ), "year", QUOTIENT ( [id], 10000) , "month", MOD (  QUOTIENT ( [id], 100 ), 100 ), "period", FORMAT ( DATE ( QUOTIENT([id], 10000 ), MOD ( QUOTIENT ( [id], 100 ), 100 ), MOD ( [id], 100 ) ), "MMM-yyyy" ), "day", MOD ( [id], 100 ) )
 
 	annotation PBI_Id = dc85bdcf5dd641bca1d1cfdd071fe769
 

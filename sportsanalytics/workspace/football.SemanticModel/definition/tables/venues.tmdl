@@ -1,4 +1,4 @@
-table 'football venues'
+table venues
 	lineageTag: 3919120c-97a1-4249-a9af-bf9d250e212b
 
 	column id
@@ -90,7 +90,7 @@ table 'football venues'
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	partition 'football venues' = m
+	partition venues = m
 		mode: import
 		source =
 				let

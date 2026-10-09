@@ -1,4 +1,4 @@
-table 'football fixtures'
+table fixtures
 	lineageTag: 9c64298d-6159-44a0-a697-d4c755eaa5d3
 
 	column id
@@ -127,7 +127,7 @@ table 'football fixtures'
 
 		annotation SummarizationSetBy = Automatic
 
-	partition 'football fixtures' = m
+	partition fixtures = m
 		mode: import
 		source =
 				let

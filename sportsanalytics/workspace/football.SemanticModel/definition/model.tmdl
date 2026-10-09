@@ -8,17 +8,17 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["football countries","football leagues","football seasons","football teams","football venues","football fixtures"]
+annotation PBI_QueryOrder = ["countries","leagues","seasons","teams","venues","fixtures"]
 
 annotation PBI_ProTooling = ["WebModelingEdit"]
 
-ref table 'football countries'
-ref table 'football leagues'
-ref table 'football seasons'
-ref table 'football teams'
-ref table 'football venues'
+ref table countries
+ref table leagues
+ref table seasons
+ref table teams
+ref table venues
 ref table calendar
-ref table 'football fixtures'
+ref table fixtures
 ref table fixture_times
 ref table fixture_dates
 

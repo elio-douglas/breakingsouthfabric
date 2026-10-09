@@ -1,42 +1,42 @@
 relationship a37c3ed1-6d0d-485a-376f-588fdb0557dd
-	fromColumn: 'football teams'.venue_id
-	toColumn: 'football venues'.id
+	fromColumn: teams.venue_id
+	toColumn: venues.id
 
 relationship 3dc825ae-6d15-f685-cc2d-74c04a5e9813
-	fromColumn: 'football seasons'.league_id
-	toColumn: 'football leagues'.id
+	fromColumn: seasons.league_id
+	toColumn: leagues.id
 
 relationship da250d33-8a55-7b09-f7c0-52199a228462
-	fromColumn: 'football leagues'.country_id
-	toColumn: 'football countries'.id
+	fromColumn: leagues.country_id
+	toColumn: countries.id
 
 relationship 3528b9cf-3bdc-90fc-b9aa-396b41d51473
-	fromColumn: 'football seasons'.start
+	fromColumn: seasons.start
 	toColumn: calendar.Date
 
 relationship 691f220b-dac6-e3ce-4b22-9af8469704d8
 	isActive: false
-	fromColumn: 'football seasons'.end
+	fromColumn: seasons.end
 	toColumn: calendar.Date
 
 relationship 8d5bc986-bbef-c057-df0f-e0e09c3a139e
-	fromColumn: 'football fixtures'.home_team_id
-	toColumn: 'football teams'.id
+	fromColumn: fixtures.home_team_id
+	toColumn: teams.id
 
 relationship 58879006-22b0-a2b6-2bb2-f83227426ff1
 	isActive: false
-	fromColumn: 'football fixtures'.away_team_id
-	toColumn: 'football teams'.id
+	fromColumn: fixtures.away_team_id
+	toColumn: teams.id
 
 relationship 881fa2f9-6acd-ed83-994b-90ec3b135341
-	fromColumn: 'football fixtures'.league_id
-	toColumn: 'football leagues'.id
+	fromColumn: fixtures.league_id
+	toColumn: leagues.id
 
 relationship b6f36c17-a412-45c3-c9de-d6645d70a4e1
-	fromColumn: 'football fixtures'.time_id
+	fromColumn: fixtures.time_id
 	toColumn: fixture_times.id
 
 relationship 99d989d1-2045-dd1a-89b4-969cfd3af3cb
-	fromColumn: 'football fixtures'.date_id
+	fromColumn: fixtures.date_id
 	toColumn: fixture_dates.id
 
