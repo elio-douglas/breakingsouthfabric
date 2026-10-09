@@ -1,9 +1,10 @@
 CREATE TABLE [football].[leagues]
 (
   [id] INT NOT NULL,
+  [code] INT NULL,
   [name] VARCHAR(100) NOT NULL,
   [type] VARCHAR(50) NOT NULL,
-  [logo] VARCHAR(255) NOT NULL,
+  [logo] VARCHAR(255) NULL,
   [country_id] INT NOT NULL,
   [valid_from] DATE NOT NULL DEFAULT '1900-01-01',
   [valid_to] DATE NOT NULL DEFAULT '9999-12-31',
