@@ -1,53 +1,3 @@
-relationship 5fb6b428-deb1-4ef3-9d41-b219d12da873
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football countries'.valid_from
-	toColumn: LocalDateTable_72057613-a089-4881-99f2-7e0dcee2d0ec.Date
-
-relationship f5a24e44-a8dd-485e-a5c3-163b2f02b31f
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football countries'.valid_to
-	toColumn: LocalDateTable_1156aa1b-a752-4a0a-a4dd-75d7f02702bb.Date
-
-relationship 8bfc0738-66e6-43e4-80ca-e54a81450bba
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football leagues'.valid_from
-	toColumn: LocalDateTable_655b31af-6641-4783-a91d-152245d00f22.Date
-
-relationship d31f12d9-745d-4272-bb42-ebb184c2112d
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football leagues'.valid_to
-	toColumn: LocalDateTable_d7021981-6570-47cf-9fe3-7e280308f556.Date
-
-relationship 0e7437ea-2a77-4cc1-999f-87a3cdb5e24a
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football seasons'.valid_from
-	toColumn: LocalDateTable_64588984-b016-4eaa-9916-73a46239b777.Date
-
-relationship 97ddb040-6b82-4f1c-b413-a561028e2051
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football seasons'.valid_to
-	toColumn: LocalDateTable_e237622e-5674-4ca6-924e-b372bb13cdc7.Date
-
-relationship 2c2a0fae-4e57-4530-b950-706685f902f9
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football teams'.valid_from
-	toColumn: LocalDateTable_00ada0f6-5f2e-4b5c-863a-d206925484be.Date
-
-relationship 87dbe3d1-ac47-4023-a3b0-6e7a84f623e0
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football teams'.valid_to
-	toColumn: LocalDateTable_c9f4ab2c-43db-4607-a753-0d22f4d64093.Date
-
-relationship c1971762-5374-4c80-a966-082d946e43c3
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football venues'.valid_from
-	toColumn: LocalDateTable_766bde42-cdad-4b38-b668-97535e0b3a23.Date
-
-relationship 5c9576ac-0d37-4f85-af9f-bb139b06ab0b
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football venues'.valid_to
-	toColumn: LocalDateTable_3e1b23a6-4b22-4c83-b5b1-16ab67aaddf4.Date
-
 relationship a37c3ed1-6d0d-485a-376f-588fdb0557dd
 	fromColumn: 'football teams'.venue_id
 	toColumn: 'football venues'.id
@@ -59,11 +9,6 @@ relationship 3dc825ae-6d15-f685-cc2d-74c04a5e9813
 relationship da250d33-8a55-7b09-f7c0-52199a228462
 	fromColumn: 'football leagues'.country_id
 	toColumn: 'football countries'.id
-
-relationship 8b726300-d792-4d9a-9ef2-d8f6587610cc
-	joinOnDateBehavior: datePartOnly
-	fromColumn: calendar.Date
-	toColumn: LocalDateTable_63150096-f330-49a3-9672-0b976cf8190f.Date
 
 relationship 3528b9cf-3bdc-90fc-b9aa-396b41d51473
 	fromColumn: 'football seasons'.start

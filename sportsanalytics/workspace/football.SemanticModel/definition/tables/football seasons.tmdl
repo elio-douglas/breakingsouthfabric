@@ -57,11 +57,6 @@ table 'football seasons'
 		summarizeBy: none
 		sourceColumn: valid_from
 
-		variation Variation
-			isDefault
-			relationship: 0e7437ea-2a77-4cc1-999f-87a3cdb5e24a
-			defaultHierarchy: LocalDateTable_64588984-b016-4eaa-9916-73a46239b777.'Gerarchia data'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -72,11 +67,6 @@ table 'football seasons'
 		lineageTag: 86e21687-f653-4372-a52b-b4e8f3965009
 		summarizeBy: none
 		sourceColumn: valid_to
-
-		variation Variation
-			isDefault
-			relationship: 97ddb040-6b82-4f1c-b413-a561028e2051
-			defaultHierarchy: LocalDateTable_e237622e-5674-4ca6-924e-b372bb13cdc7.'Gerarchia data'
 
 		annotation SummarizationSetBy = Automatic
 

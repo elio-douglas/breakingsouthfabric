@@ -68,11 +68,6 @@ table 'football teams'
 		summarizeBy: none
 		sourceColumn: valid_from
 
-		variation Variation
-			isDefault
-			relationship: 2c2a0fae-4e57-4530-b950-706685f902f9
-			defaultHierarchy: LocalDateTable_00ada0f6-5f2e-4b5c-863a-d206925484be.'Gerarchia data'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -83,11 +78,6 @@ table 'football teams'
 		lineageTag: c146b268-7727-4f15-991c-86faf6c38894
 		summarizeBy: none
 		sourceColumn: valid_to
-
-		variation Variation
-			isDefault
-			relationship: 87dbe3d1-ac47-4023-a3b0-6e7a84f623e0
-			defaultHierarchy: LocalDateTable_c9f4ab2c-43db-4607-a753-0d22f4d64093.'Gerarchia data'
 
 		annotation SummarizationSetBy = Automatic
 

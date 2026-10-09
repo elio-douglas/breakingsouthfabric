@@ -75,11 +75,6 @@ table 'football venues'
 		summarizeBy: none
 		sourceColumn: valid_from
 
-		variation Variation
-			isDefault
-			relationship: c1971762-5374-4c80-a966-082d946e43c3
-			defaultHierarchy: LocalDateTable_766bde42-cdad-4b38-b668-97535e0b3a23.'Gerarchia data'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -90,11 +85,6 @@ table 'football venues'
 		lineageTag: e50d2030-4d8b-42d2-84a9-fb08992cce96
 		summarizeBy: none
 		sourceColumn: valid_to
-
-		variation Variation
-			isDefault
-			relationship: 5c9576ac-0d37-4f85-af9f-bb139b06ab0b
-			defaultHierarchy: LocalDateTable_3e1b23a6-4b22-4c83-b5b1-16ab67aaddf4.'Gerarchia data'
 
 		annotation SummarizationSetBy = Automatic
 

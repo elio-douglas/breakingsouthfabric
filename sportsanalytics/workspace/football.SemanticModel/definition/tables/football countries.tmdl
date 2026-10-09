@@ -41,11 +41,6 @@ table 'football countries'
 		summarizeBy: none
 		sourceColumn: valid_from
 
-		variation Variation
-			isDefault
-			relationship: 5fb6b428-deb1-4ef3-9d41-b219d12da873
-			defaultHierarchy: LocalDateTable_72057613-a089-4881-99f2-7e0dcee2d0ec.'Gerarchia data'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -56,11 +51,6 @@ table 'football countries'
 		lineageTag: 08c98265-f7d5-4b53-900e-abbd629d9d87
 		summarizeBy: none
 		sourceColumn: valid_to
-
-		variation Variation
-			isDefault
-			relationship: f5a24e44-a8dd-485e-a5c3-163b2f02b31f
-			defaultHierarchy: LocalDateTable_1156aa1b-a752-4a0a-a4dd-75d7f02702bb.'Gerarchia data'
 
 		annotation SummarizationSetBy = Automatic
 

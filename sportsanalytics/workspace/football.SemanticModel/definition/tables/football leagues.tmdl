@@ -59,11 +59,6 @@ table 'football leagues'
 		summarizeBy: none
 		sourceColumn: valid_from
 
-		variation Variation
-			isDefault
-			relationship: 8bfc0738-66e6-43e4-80ca-e54a81450bba
-			defaultHierarchy: LocalDateTable_655b31af-6641-4783-a91d-152245d00f22.'Gerarchia data'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -74,11 +69,6 @@ table 'football leagues'
 		lineageTag: 18c6823e-425d-4755-a971-962aeb964112
 		summarizeBy: none
 		sourceColumn: valid_to
-
-		variation Variation
-			isDefault
-			relationship: d31f12d9-745d-4272-bb42-ebb184c2112d
-			defaultHierarchy: LocalDateTable_d7021981-6570-47cf-9fe3-7e280308f556.'Gerarchia data'
 
 		annotation SummarizationSetBy = Automatic
 
