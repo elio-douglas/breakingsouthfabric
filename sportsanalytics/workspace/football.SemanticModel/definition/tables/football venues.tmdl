@@ -1,0 +1,114 @@
+table 'football venues'
+	lineageTag: 3919120c-97a1-4249-a9af-bf9d250e212b
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e2b15b4-6a64-48ef-b434-50537fe056d3
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 3856d370-d5e0-4e6f-b87a-21a299039f32
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: f23d1bbb-1ff7-4f02-930a-837f366c3a60
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacity
+		dataType: int64
+		formatString: 0
+		lineageTag: f47b9d0f-c02b-463f-ba01-dabd0177f3cf
+		summarizeBy: sum
+		sourceColumn: capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column surface
+		dataType: string
+		lineageTag: 45010b89-fcbe-4443-b6ef-98b8939ed940
+		summarizeBy: none
+		sourceColumn: surface
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: ec040a68-6aab-4339-bc70-8827ee718708
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column image
+		dataType: string
+		lineageTag: ba7d91e3-8023-41c4-b158-593681cb101a
+		summarizeBy: none
+		sourceColumn: image
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 00392419-b3a7-4456-8079-e3d76c9f1e91
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9cb426be-ea5e-47d5-bb18-717950fe2cf5
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		variation Variation
+			isDefault
+			relationship: c1971762-5374-4c80-a966-082d946e43c3
+			defaultHierarchy: LocalDateTable_766bde42-cdad-4b38-b668-97535e0b3a23.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e50d2030-4d8b-42d2-84a9-fb08992cce96
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		variation Variation
+			isDefault
+			relationship: 5c9576ac-0d37-4f85-af9f-bb139b06ab0b
+			defaultHierarchy: LocalDateTable_3e1b23a6-4b22-4c83-b5b1-16ab67aaddf4.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'football venues' = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "venues"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "name", "city", "capacity", "surface", "address", "image", "is_current", "valid_from", "valid_to"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+

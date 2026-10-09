@@ -1,0 +1,33 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["football countries","football leagues","football seasons","football teams","football venues"]
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table 'football countries'
+ref table DateTableTemplate_c08d3705-6f7c-42d2-aca1-66f091ec0a08
+ref table LocalDateTable_72057613-a089-4881-99f2-7e0dcee2d0ec
+ref table LocalDateTable_1156aa1b-a752-4a0a-a4dd-75d7f02702bb
+ref table 'football leagues'
+ref table LocalDateTable_655b31af-6641-4783-a91d-152245d00f22
+ref table LocalDateTable_d7021981-6570-47cf-9fe3-7e280308f556
+ref table 'football seasons'
+ref table LocalDateTable_1f5c3158-8293-4ede-aa3e-559251dafe4f
+ref table LocalDateTable_565b9ef6-00d5-48f6-aea8-02f1ec655cfd
+ref table LocalDateTable_64588984-b016-4eaa-9916-73a46239b777
+ref table LocalDateTable_e237622e-5674-4ca6-924e-b372bb13cdc7
+ref table 'football teams'
+ref table LocalDateTable_00ada0f6-5f2e-4b5c-863a-d206925484be
+ref table LocalDateTable_c9f4ab2c-43db-4607-a753-0d22f4d64093
+ref table 'football venues'
+ref table LocalDateTable_766bde42-cdad-4b38-b668-97535e0b3a23
+ref table LocalDateTable_3e1b23a6-4b22-4c83-b5b1-16ab67aaddf4
+

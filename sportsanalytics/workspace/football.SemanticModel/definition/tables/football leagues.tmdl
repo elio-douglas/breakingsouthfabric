@@ -1,0 +1,107 @@
+table 'football leagues'
+	lineageTag: 722733f7-d9e6-41c4-9b29-797e4a1b5e49
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f8c0302-2344-494d-ae18-35e9fbd5bc65
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: int64
+		formatString: 0
+		lineageTag: 852d4ac9-ef69-433f-b392-d5938cb88229
+		summarizeBy: sum
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: d229b572-f41a-4123-bf40-1bd7689d8bde
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 50ab7b8f-3e2b-486d-ae00-919cf562711f
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column logo
+		dataType: string
+		lineageTag: 6dee427b-5a8e-4b6e-aa7f-844eca76681f
+		summarizeBy: none
+		sourceColumn: logo
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d8d27ae-1da2-4ae0-8d99-f5fcb425fa2e
+		summarizeBy: none
+		sourceColumn: country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4fc7e5ce-aeba-40de-83a6-7fbbfacaa76b
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		variation Variation
+			isDefault
+			relationship: 8bfc0738-66e6-43e4-80ca-e54a81450bba
+			defaultHierarchy: LocalDateTable_655b31af-6641-4783-a91d-152245d00f22.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 18c6823e-425d-4755-a971-962aeb964112
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		variation Variation
+			isDefault
+			relationship: d31f12d9-745d-4272-bb42-ebb184c2112d
+			defaultHierarchy: LocalDateTable_d7021981-6570-47cf-9fe3-7e280308f556.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7c6d0c71-dbaf-4917-8e6a-4ae229c6d840
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'football leagues' = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "leagues"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "code", "name", "type", "logo", "country_id", "valid_from", "valid_to", "is_current"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+

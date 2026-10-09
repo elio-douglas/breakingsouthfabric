@@ -1,0 +1,106 @@
+table 'football seasons'
+	lineageTag: a034d363-6db8-4bfa-a417-0d3d546a4672
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: ae0e8daa-22f3-4f88-bdb9-88283a6b98df
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column league_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fcde31a-3774-42fd-8b30-771794192ff5
+		summarizeBy: none
+		sourceColumn: league_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 674bb0e6-8ba2-4973-a105-b14af16af805
+		summarizeBy: none
+		sourceColumn: start
+
+		variation Variation
+			isDefault
+			relationship: 7a1ac7ce-4924-4f7f-97b1-68072c424d12
+			defaultHierarchy: LocalDateTable_1f5c3158-8293-4ede-aa3e-559251dafe4f.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9cac60d-59d9-4db6-b752-9ce4a41e8602
+		summarizeBy: none
+		sourceColumn: end
+
+		variation Variation
+			isDefault
+			relationship: bc6dd012-448f-41ed-a37a-a6f060468adb
+			defaultHierarchy: LocalDateTable_565b9ef6-00d5-48f6-aea8-02f1ec655cfd.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7c1fcecf-3dc2-4933-837c-da71ba9a081a
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b89d915c-fa30-46f2-a4d6-dea4e978ab7d
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		variation Variation
+			isDefault
+			relationship: 0e7437ea-2a77-4cc1-999f-87a3cdb5e24a
+			defaultHierarchy: LocalDateTable_64588984-b016-4eaa-9916-73a46239b777.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 86e21687-f653-4372-a52b-b4e8f3965009
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		variation Variation
+			isDefault
+			relationship: 97ddb040-6b82-4f1c-b413-a561028e2051
+			defaultHierarchy: LocalDateTable_e237622e-5674-4ca6-924e-b372bb13cdc7.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'football seasons' = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "seasons"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "league_id", "start", "end", "is_current", "valid_from", "valid_to"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+

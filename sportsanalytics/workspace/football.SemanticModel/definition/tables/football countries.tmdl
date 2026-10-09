@@ -1,0 +1,89 @@
+table 'football countries'
+	lineageTag: 50dc3643-a208-4815-a309-b14845073300
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fc9e5b6-2fc2-43bb-9e53-c0ee3340e5e2
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: 157fc705-b615-4a51-b702-6c1890f06791
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 30676748-66e1-4342-a0a6-a08783860b70
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag
+		dataType: string
+		lineageTag: f6db71eb-ad67-4c58-af47-e485b20cde2d
+		summarizeBy: none
+		sourceColumn: flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e03af4ff-08ad-4047-88f1-14f12ef79de7
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		variation Variation
+			isDefault
+			relationship: 5fb6b428-deb1-4ef3-9d41-b219d12da873
+			defaultHierarchy: LocalDateTable_72057613-a089-4881-99f2-7e0dcee2d0ec.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 08c98265-f7d5-4b53-900e-abbd629d9d87
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		variation Variation
+			isDefault
+			relationship: f5a24e44-a8dd-485e-a5c3-163b2f02b31f
+			defaultHierarchy: LocalDateTable_1156aa1b-a752-4a0a-a4dd-75d7f02702bb.'Gerarchia data'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d78a9450-1e89-4112-b92e-67c676d18a41
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'football countries' = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "countries"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "code", "name", "flag", "valid_from", "valid_to", "is_current"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+
