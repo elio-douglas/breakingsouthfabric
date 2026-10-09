@@ -18,16 +18,6 @@ relationship d31f12d9-745d-4272-bb42-ebb184c2112d
 	fromColumn: 'football leagues'.valid_to
 	toColumn: LocalDateTable_d7021981-6570-47cf-9fe3-7e280308f556.Date
 
-relationship 7a1ac7ce-4924-4f7f-97b1-68072c424d12
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football seasons'.start
-	toColumn: LocalDateTable_1f5c3158-8293-4ede-aa3e-559251dafe4f.Date
-
-relationship bc6dd012-448f-41ed-a37a-a6f060468adb
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'football seasons'.end
-	toColumn: LocalDateTable_565b9ef6-00d5-48f6-aea8-02f1ec655cfd.Date
-
 relationship 0e7437ea-2a77-4cc1-999f-87a3cdb5e24a
 	joinOnDateBehavior: datePartOnly
 	fromColumn: 'football seasons'.valid_from
@@ -69,4 +59,39 @@ relationship 3dc825ae-6d15-f685-cc2d-74c04a5e9813
 relationship da250d33-8a55-7b09-f7c0-52199a228462
 	fromColumn: 'football leagues'.country_id
 	toColumn: 'football countries'.id
+
+relationship 8b726300-d792-4d9a-9ef2-d8f6587610cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: calendar.Date
+	toColumn: LocalDateTable_63150096-f330-49a3-9672-0b976cf8190f.Date
+
+relationship 3528b9cf-3bdc-90fc-b9aa-396b41d51473
+	fromColumn: 'football seasons'.start
+	toColumn: calendar.Date
+
+relationship 691f220b-dac6-e3ce-4b22-9af8469704d8
+	isActive: false
+	fromColumn: 'football seasons'.end
+	toColumn: calendar.Date
+
+relationship 8d5bc986-bbef-c057-df0f-e0e09c3a139e
+	fromColumn: 'football fixtures'.home_team_id
+	toColumn: 'football teams'.id
+
+relationship 58879006-22b0-a2b6-2bb2-f83227426ff1
+	isActive: false
+	fromColumn: 'football fixtures'.away_team_id
+	toColumn: 'football teams'.id
+
+relationship 881fa2f9-6acd-ed83-994b-90ec3b135341
+	fromColumn: 'football fixtures'.league_id
+	toColumn: 'football leagues'.id
+
+relationship b6f36c17-a412-45c3-c9de-d6645d70a4e1
+	fromColumn: 'football fixtures'.time_id
+	toColumn: fixture_times.id
+
+relationship 99d989d1-2045-dd1a-89b4-969cfd3af3cb
+	fromColumn: 'football fixtures'.date_id
+	toColumn: fixture_dates.id
 

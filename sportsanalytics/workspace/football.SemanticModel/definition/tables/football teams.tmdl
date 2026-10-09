@@ -5,7 +5,7 @@ table 'football teams'
 		dataType: int64
 		formatString: 0
 		lineageTag: 209d63c0-4868-4fbd-b19f-3becd0c6537a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: id
 
 		annotation SummarizationSetBy = Automatic
