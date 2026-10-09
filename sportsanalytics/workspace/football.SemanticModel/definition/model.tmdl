@@ -10,7 +10,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["countries","leagues","seasons","teams","venues","fixtures"]
 
-annotation PBI_ProTooling = ["WebModelingEdit"]
+annotation PBI_ProTooling = ["WebModelingEdit","DaxQueryView_Desktop"]
 
 ref table countries
 ref table leagues
