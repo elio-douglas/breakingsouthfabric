@@ -40,3 +40,20 @@ relationship 99d989d1-2045-dd1a-89b4-969cfd3af3cb
 	fromColumn: fixtures.date_id
 	toColumn: fixture_dates.id
 
+relationship 9622997c-9f87-cff0-0e7d-9b0b0b4bcbd3
+	fromColumn: events.event_type_id
+	toColumn: event_types.id
+
+relationship a9425b6d-54b6-643e-fcee-8bba1e166a5c
+	fromColumn: events.fixture_id
+	toColumn: fixtures.id
+
+relationship 53db0688-73eb-7ce4-b9ee-9fac8e6c4693
+	isActive: false
+	fromColumn: events.team_id
+	toColumn: teams.id
+
+relationship f3ec787c-8b73-0b20-91f9-ccb9be057051
+	fromColumn: events.minute_id
+	toColumn: event_times.id
+

@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["countries","leagues","seasons","teams","venues","fixtures"]
+annotation PBI_QueryOrder = ["countries","leagues","seasons","teams","venues","fixtures","event_types","events"]
 
 annotation PBI_ProTooling = ["WebModelingEdit","DaxQueryView_Desktop"]
 
@@ -21,4 +21,7 @@ ref table calendar
 ref table fixtures
 ref table fixture_times
 ref table fixture_dates
+ref table event_types
+ref table events
+ref table event_times
 

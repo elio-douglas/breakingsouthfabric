@@ -1,0 +1,79 @@
+table event_types
+	lineageTag: f181f9df-39d5-4255-8dc4-1ac83fd7fa5c
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: cffd074f-1a10-4744-bb52-313503ef4a1d
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 517b9073-0f35-47b3-a867-fbb9e4bdae69
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column detail
+		dataType: string
+		lineageTag: 1ebf0bd7-3d02-45ae-bc53-2b5bb005fea4
+		summarizeBy: none
+		sourceColumn: detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column comments
+		dataType: string
+		lineageTag: fe242e0c-cf32-4300-8818-45c7f3fb2c8a
+		summarizeBy: none
+		sourceColumn: comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ba1ab8b4-f931-41aa-b02a-0e729b1405fd
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 61d6d8f1-5fa2-46a5-9852-a0096a1458f7
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ef2c1730-6a0e-496a-baa4-d73ffe96896f
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	partition event_types = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "event_types"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "type", "detail", "comments", "valid_from", "valid_to", "is_current"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+
