@@ -10,15 +10,6 @@ relationship da250d33-8a55-7b09-f7c0-52199a228462
 	fromColumn: leagues.country_id
 	toColumn: countries.id
 
-relationship 3528b9cf-3bdc-90fc-b9aa-396b41d51473
-	fromColumn: seasons.start
-	toColumn: calendar.Date
-
-relationship 691f220b-dac6-e3ce-4b22-9af8469704d8
-	isActive: false
-	fromColumn: seasons.end
-	toColumn: calendar.Date
-
 relationship 8d5bc986-bbef-c057-df0f-e0e09c3a139e
 	fromColumn: fixtures.home_team_id
 	toColumn: teams.id

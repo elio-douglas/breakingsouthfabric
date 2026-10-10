@@ -17,7 +17,6 @@ ref table leagues
 ref table seasons
 ref table teams
 ref table venues
-ref table calendar
 ref table fixtures
 ref table fixture_times
 ref table fixture_dates
