@@ -1,0 +1,81 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "954c4138b64c601a53d5",
+  "position": {
+    "x": 36.922707104295831,
+    "y": 223.99775643272804,
+    "z": 1000,
+    "height": 788.91517512845428,
+    "width": 1817.8279464348313,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "teams"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "teams.name",
+              "nativeQueryRef": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fixtures"
+                    }
+                  },
+                  "Property": "fulltime_home"
+                }
+              },
+              "queryRef": "Sum(fixtures.fulltime_home)",
+              "nativeQueryRef": "fulltime_home"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fixtures"
+                    }
+                  },
+                  "Property": "fulltime_away"
+                }
+              },
+              "queryRef": "Sum(fixtures.fulltime_away)",
+              "nativeQueryRef": "fulltime_away"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
