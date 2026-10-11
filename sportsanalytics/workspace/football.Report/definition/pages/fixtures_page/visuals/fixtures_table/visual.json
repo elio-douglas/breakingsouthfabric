@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "954c4138b64c601a53d5",
+  "name": "fixtures_table",
   "position": {
     "x": 36.922707104295831,
     "y": 223.99775643272804,

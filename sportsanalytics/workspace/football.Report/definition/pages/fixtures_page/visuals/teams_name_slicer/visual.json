@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "e6355ff57f9491ce416a",
+  "name": "teams_name_slicer",
   "position": {
-    "x": 36.922707104295831,
-    "y": 40.614977814725414,
-    "z": 0,
+    "x": 624.62963361836864,
+    "y": 41.024403902901334,
+    "z": 3000,
     "height": 84.92222633988041,
     "width": 280.61257399264832,
-    "tabOrder": 0
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fixture_dates"
+                      "Entity": "teams"
                     }
                   },
-                  "Property": "year"
+                  "Property": "name"
                 }
               },
-              "queryRef": "fixture_dates.year",
-              "nativeQueryRef": "year",
+              "queryRef": "teams.name",
+              "nativeQueryRef": "name",
               "active": true
             }
           ]
@@ -50,7 +50,15 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "selfFilterEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ]
     },
