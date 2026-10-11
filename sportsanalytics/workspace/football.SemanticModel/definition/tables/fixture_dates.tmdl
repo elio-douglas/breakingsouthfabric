@@ -1,0 +1,53 @@
+table fixture_dates
+	lineageTag: 4fb6e857-eedf-461e-aaf6-931ff9e6c633
+
+	column id
+		formatString: 0
+		lineageTag: cb2d662b-d273-4d28-bca7-fcc670580d6f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		formatString: 0
+		lineageTag: 935b7db3-293b-4b22-b7e6-2473ffb33614
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		formatString: 0
+		lineageTag: ecf3ca93-62d9-4fc6-89e6-39c5a816a59a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column period
+		lineageTag: 0c200936-3fb6-4db1-82d3-539358ee812b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [period]
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		formatString: 0
+		lineageTag: fb91baa7-8155-4e5b-a400-a747f1ecff70
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [day]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fixture_dates = calculated
+		mode: import
+		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( fixtures, "id", fixtures[date_id] ) ), "year", QUOTIENT ( [id], 10000) , "month", MOD (  QUOTIENT ( [id], 100 ), 100 ), "period", FORMAT ( DATE ( QUOTIENT([id], 10000 ), MOD ( QUOTIENT ( [id], 100 ), 100 ), MOD ( [id], 100 ) ), "MMM-yyyy" ), "day", MOD ( [id], 100 ) )
+
+	annotation PBI_Id = dc85bdcf5dd641bca1d1cfdd071fe769
+

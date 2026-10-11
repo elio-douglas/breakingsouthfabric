@@ -1,0 +1,97 @@
+table teams
+	lineageTag: 9a480034-9559-4bc9-89f0-485e690608c2
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 209d63c0-4868-4fbd-b19f-3becd0c6537a
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: 9ac59225-74f1-4054-a392-8abf567d41d2
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: bba3c6fa-d1e4-474c-a700-fe96d52802c6
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column logo
+		dataType: string
+		lineageTag: 80160bd8-5b0f-4a85-99f7-41844e2e4284
+		summarizeBy: none
+		sourceColumn: logo
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_national
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9dbd41a6-c97a-492b-ac9f-436ec1fd6d85
+		summarizeBy: none
+		sourceColumn: is_national
+
+		annotation SummarizationSetBy = Automatic
+
+	column venue_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a0151ce3-9668-42fa-97ae-304ba97797e5
+		summarizeBy: none
+		sourceColumn: venue_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f64837e7-7bd2-4c7b-b34b-3197845a3beb
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: db3aa5a2-826c-48a6-9bad-d985f7c10bda
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c146b268-7727-4f15-991c-86faf6c38894
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition teams = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "teams"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "code", "name", "logo", "is_national", "venue_id", "is_current", "valid_from", "valid_to"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["countries","leagues","seasons","teams","venues","fixtures","event_types","events"]
+
+annotation PBI_ProTooling = ["WebModelingEdit","DaxQueryView_Desktop"]
+
+ref table countries
+ref table leagues
+ref table seasons
+ref table teams
+ref table venues
+ref table fixtures
+ref table fixture_times
+ref table fixture_dates
+ref table event_types
+ref table events
+ref table event_times
+

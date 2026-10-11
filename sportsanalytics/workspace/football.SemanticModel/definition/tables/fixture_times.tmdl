@@ -1,0 +1,36 @@
+table fixture_times
+	lineageTag: 381e22ce-a158-4255-8e15-2547feaca65f
+
+	column id
+		formatString: 0
+		lineageTag: 624ac175-67a9-4870-a55b-af40c5fd2182
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour
+		formatString: 0
+		lineageTag: f3151a1f-9b91-408c-b57b-55b883d54ca5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [hour]
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute
+		formatString: 0
+		lineageTag: 7d64af64-a88c-4b62-8af6-4936e61ee87e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [minute]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fixture_times = calculated
+		mode: import
+		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( fixtures, "id", fixtures[time_id] ) ), "hour", CONVERT ( LEFT ( CONVERT ( [id] , STRING ), 2 ), INTEGER ), "minute", CONVERT ( RIGHT ( CONVERT ( [id] , STRING ), 2 ), INTEGER ) )
+
+	annotation PBI_Id = 393dc3de3a0a4d1db257828fce01f4ca
+
