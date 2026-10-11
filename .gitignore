@@ -1,4 +1,3 @@
-.DS_Store
 sportsanalytics/workspace/12cea0cf-1516-4301-813d-e2629002d503/.workspace-info
 sportsanalytics/workspace/.work-folder-info
 
@@ -9,9 +8,6 @@ sportsanalytics/workspace/.work-folder-info
 
 # dotenv files
 .env
-
-# VSCode
-.vscode/
 
 # User-specific files
 *.rsuser
