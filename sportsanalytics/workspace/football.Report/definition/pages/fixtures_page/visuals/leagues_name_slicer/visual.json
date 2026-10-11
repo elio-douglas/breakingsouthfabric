@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "d5860305abca33d4c7a5",
+  "name": "leagues_name_slicer",
   "position": {
     "x": 329.51859909104616,
     "y": 41.024403902901334,
