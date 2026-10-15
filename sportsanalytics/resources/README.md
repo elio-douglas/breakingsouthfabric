@@ -16,8 +16,9 @@ repository.
 - `publish-warehouse.sh` / `publish-warehouse.ps1` — builds and
   publishes the Fabric warehouse project.
 - `free-tier-usage.sh` — Azure SQL free-offer vCore usage this month.
-- `grant_football_schema_access.sql`, `sp-configuration.sql` — service
-  principal permissions on the Azure SQL database.
+- `verify-sp-permissions.sql` — lists the service principal's permissions
+  and role memberships on the Azure SQL database (declared in
+  `../db/sportsanalytics/Security/`).
 - `breakingsouth.json` — Power BI report theme.
 
 ## Docs
