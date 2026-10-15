@@ -490,3 +490,6 @@ $RECYCLE.BIN/
 
 # Claude
 .claude/
+
+# Local secrets
+secrets.txt
