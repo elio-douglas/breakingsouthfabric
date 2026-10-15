@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "SQLDatabase",
-    "displayName": "sportsanalytics-sql"
+    "type": "Warehouse",
+    "displayName": "sportsanalytics-dwh",
+    "description": ""
   },
   "config": {
     "version": "2.0",
-    "logicalId": "86f22b4f-ba4b-84a2-4e9d-7aff2fc6bf85"
+    "logicalId": "d8bbb622-1f16-9a83-4eda-bb7fe13d0fab"
   }
 }
