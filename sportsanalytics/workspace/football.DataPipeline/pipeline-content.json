@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "container": "sportsanalytics",
+            "scope": "football"
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "ca3c0c20-df7a-8f74-4622-e18ec2892c65",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "cf98d7ab-0aae-4773-9cbf-f8f539319d19"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "api_configuration",
+        "dependsOn": []
+      }
+    ]
+  }
+}
