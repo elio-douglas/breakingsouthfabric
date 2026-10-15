@@ -5,7 +5,8 @@ CREATE TABLE [football].[events] (
     [team_id]       INT    NOT NULL,
     [player_id]     INT    NOT NULL,
     [player_out_id] INT    NULL,
-    [event_type_id] INT    NOT NULL
+    [event_type_id] INT    NOT NULL,
+    [dw_updated_at] DATETIME2 (6) NULL
 );
 
 

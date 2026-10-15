@@ -12,7 +12,8 @@ CREATE TABLE [football].[fixtures] (
     [extratime_home] SMALLINT NULL,
     [extratime_away] SMALLINT NULL,
     [penalty_home]   SMALLINT NULL,
-    [penalty_away]   SMALLINT NULL
+    [penalty_away]   SMALLINT NULL,
+    [dw_updated_at] DATETIME2 (6) NULL
 );
 
 

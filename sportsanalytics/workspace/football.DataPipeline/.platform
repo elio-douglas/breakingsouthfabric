@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "football"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0849e1ed-c66a-8d30-4e98-08a089a0b82e"
+  }
+}

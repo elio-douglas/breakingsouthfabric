@@ -5,7 +5,8 @@ CREATE TABLE [football].[venues] (
     [capacity] INT           NULL,
     [surface]  VARCHAR (255) NULL,
     [address]  VARCHAR (510) NULL,
-    [image]    VARCHAR (510) NULL
+    [image]    VARCHAR (510) NULL,
+    [dw_updated_at] DATETIME2 (6) NULL
 );
 
 

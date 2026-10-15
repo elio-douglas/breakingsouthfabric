@@ -1,0 +1,233 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "additionalColumns": [
+              {
+                "name": "dw_updated_at",
+                "value": {
+                  "value": "@formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm:ss.ffffff')",
+                  "type": "Expression"
+                }
+              }
+            ],
+            "storeSettings": {
+              "type": "AzureBlobStorageReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "AzureBlobStorageLocation",
+                  "container": {
+                    "value": "@pipeline().parameters.container",
+                    "type": "Expression"
+                  },
+                  "folderPath": {
+                    "value": "@pipeline().parameters.scope",
+                    "type": "Expression"
+                  },
+                  "fileName": "api-config.csv"
+                },
+                "columnDelimiter": ";",
+                "quoteChar": "",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "7e0b7878-7c04-4315-a226-ee94869af2bd"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "preCopyScript": "DELETE FROM audit.api_configuration;",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "writeBehavior": "Insert",
+            "disableMetricsCollection": false,
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "schema": "audit",
+                "table": "api_configuration"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "sportsanalytics-dwh",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "d8bbb622-1f16-9a83-4eda-bb7fe13d0fab",
+                    "endpoint": "nkc3sqzhtfweramv3d7c4re6ja-z6qm4eqwcuauhaj54jrjaawvam.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "report",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "report",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "url",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "url",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "endpoint",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "endpoint",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "headers",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "headers",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "params",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "params",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "frequency",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "frequency",
+                  "physicalType": "varchar",
+                  "length": "50"
+                }
+              },
+              {
+                "source": {
+                  "name": "interval",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "interval",
+                  "physicalType": "varchar",
+                  "length": "50"
+                }
+              },
+              {
+                "source": {
+                  "name": "active",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "active",
+                  "physicalType": "varchar",
+                  "length": "50"
+                }
+              },
+              {
+                "source": {
+                  "name": "stage",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "stage",
+                  "physicalType": "varchar",
+                  "length": "50"
+                }
+              },
+              {
+                "source": {
+                  "name": "dw_updated_at",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "dw_updated_at",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get File",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "container": {
+        "type": "string"
+      },
+      "scope": {
+        "type": "string"
+      }
+    }
+  }
+}
