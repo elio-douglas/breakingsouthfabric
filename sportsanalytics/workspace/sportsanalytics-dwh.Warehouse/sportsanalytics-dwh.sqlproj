@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="2.3.0-preview.2" />
+  <Sdk Name="Microsoft.Build.Sql" Version="2.3.0" />
   <PropertyGroup>
     <Name>sportsanalytics-dwh</Name>
-    <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
+    <ProjectGuid>{9356BC90-D0C7-42F7-B72E-C431353F1EB2}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.SqlDwUnifiedDatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CS</ModelCollation>
     <DefaultCollation>Latin1_General_100_BIN2_UTF8</DefaultCollation>
