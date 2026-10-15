@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build">
   <Sdk Name="Microsoft.Build.Sql" Version="2.3.0-preview.2" />
   <PropertyGroup>
-    <Name>sportanalytics-dwh</Name>
+    <Name>sportsanalytics-dwh</Name>
     <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.SqlDwUnifiedDatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CS</ModelCollation>
