@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
   <Sdk Name="Microsoft.Build.Sql" Version="2.1" />
   <PropertyGroup>
@@ -17,7 +17,7 @@
     <ModelCollation>1033, CI</ModelCollation>
     <Name>sportsanalytics-sql-2fc6bf85-7aff-4e9d-84a2-ba4b86f22b4f</Name>
     <PageVerify>CHECKSUM</PageVerify>
-    <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
+    <ProjectGuid>{E27A4E4E-DA34-44F9-A0E0-D927382801F1}</ProjectGuid>
     <QueryStoreCaptureMode>AUTO</QueryStoreCaptureMode>
     <QueryStoreMaxPlansPerQuery>200</QueryStoreMaxPlansPerQuery>
     <QueryStoreMaxStorageSizeMB>100</QueryStoreMaxStorageSizeMB>

@@ -1,0 +1,50 @@
+relationship a37c3ed1-6d0d-485a-376f-588fdb0557dd
+	fromColumn: teams.venue_id
+	toColumn: venues.id
+
+relationship 3dc825ae-6d15-f685-cc2d-74c04a5e9813
+	fromColumn: seasons.league_id
+	toColumn: leagues.id
+
+relationship da250d33-8a55-7b09-f7c0-52199a228462
+	fromColumn: leagues.country_id
+	toColumn: countries.id
+
+relationship 8d5bc986-bbef-c057-df0f-e0e09c3a139e
+	fromColumn: fixtures.home_team_id
+	toColumn: teams.id
+
+relationship 58879006-22b0-a2b6-2bb2-f83227426ff1
+	isActive: false
+	fromColumn: fixtures.away_team_id
+	toColumn: teams.id
+
+relationship 881fa2f9-6acd-ed83-994b-90ec3b135341
+	fromColumn: fixtures.league_id
+	toColumn: leagues.id
+
+relationship b6f36c17-a412-45c3-c9de-d6645d70a4e1
+	fromColumn: fixtures.time_id
+	toColumn: fixture_times.id
+
+relationship 99d989d1-2045-dd1a-89b4-969cfd3af3cb
+	fromColumn: fixtures.date_id
+	toColumn: fixture_dates.id
+
+relationship 9622997c-9f87-cff0-0e7d-9b0b0b4bcbd3
+	fromColumn: events.event_type_id
+	toColumn: event_types.id
+
+relationship a9425b6d-54b6-643e-fcee-8bba1e166a5c
+	fromColumn: events.fixture_id
+	toColumn: fixtures.id
+
+relationship 53db0688-73eb-7ce4-b9ee-9fac8e6c4693
+	isActive: false
+	fromColumn: events.team_id
+	toColumn: teams.id
+
+relationship f3ec787c-8b73-0b20-91f9-ccb9be057051
+	fromColumn: events.minute_id
+	toColumn: event_times.id
+

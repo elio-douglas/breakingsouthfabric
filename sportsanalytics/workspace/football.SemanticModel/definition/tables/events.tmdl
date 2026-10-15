@@ -1,0 +1,78 @@
+table events
+	lineageTag: 8d5fb679-cda8-41bb-994d-1fbeaa2a1320
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fb1ae87-123d-4fc8-8cce-de67bd923f96
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column fixture_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 68a74d4f-6f03-42ed-a0f3-7b9ef61a9abe
+		summarizeBy: none
+		sourceColumn: fixture_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute_id
+		dataType: int64
+		formatString: 0
+		lineageTag: bc2a52da-84d5-41ee-ad3b-a3de06a1fb00
+		summarizeBy: none
+		sourceColumn: minute_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column team_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f2c8d2d8-6594-4e11-a56a-7841ecdd80f5
+		summarizeBy: sum
+		sourceColumn: team_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column player_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c8fb8e1-693c-434a-93d5-1bde2c619ddc
+		summarizeBy: sum
+		sourceColumn: player_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column player_out_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 46b58f20-2178-4cc0-8dfe-8f336483abed
+		summarizeBy: sum
+		sourceColumn: player_out_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 320c07d7-5abe-41f5-b126-2a4ac1bcdf9c
+		summarizeBy: none
+		sourceColumn: event_type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition events = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "events"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "fixture_id", "minute_id", "team_id", "player_id", "player_out_id", "event_type_id"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+

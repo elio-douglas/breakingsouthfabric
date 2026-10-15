@@ -1,0 +1,36 @@
+table event_times
+	lineageTag: 164710fb-44ed-4f12-9e09-55cdba4dd60a
+
+	column minute
+		formatString: 0
+		lineageTag: e8fbbffb-9186-4b79-9b7c-6b2a95177ffa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [minute]
+
+		annotation SummarizationSetBy = Automatic
+
+	column half
+		formatString: 0
+		lineageTag: 28de0e16-672e-4387-8d1e-8a9644b59f15
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [half]
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		formatString: 0
+		lineageTag: 2899b09f-8c33-4cba-aded-b500be26eced
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [id]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition event_times = calculated
+		mode: import
+		source = ADDCOLUMNS ( DISTINCT ( SELECTCOLUMNS ( 'events', "id", 'events'[minute_id] ) ), "minute", [id], "half", IF ( [id] < 46, 1, 2 ) )
+
+	annotation PBI_Id = 29f16bfdc50a410ba8f69767abbc6853
+

@@ -1,0 +1,141 @@
+table fixtures
+	lineageTag: 9c64298d-6159-44a0-a697-d4c755eaa5d3
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: bf38ca4c-478d-4ab8-9106-9701dee250b0
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e85fe421-f68a-4506-8180-fe1e6c20fd56
+		summarizeBy: none
+		sourceColumn: date_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_id
+		dataType: int64
+		formatString: 0
+		lineageTag: fd82b929-6e35-4d15-993e-f5e0db618699
+		summarizeBy: none
+		sourceColumn: time_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column league_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f3a36947-56e4-45c5-81bb-b5dbda28f049
+		summarizeBy: none
+		sourceColumn: league_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_team_id
+		dataType: int64
+		formatString: 0
+		lineageTag: fa5a87c8-f697-4ce6-ba5d-ca7ecc3f320a
+		summarizeBy: none
+		sourceColumn: home_team_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column away_team_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 546681da-f368-4100-8fd3-e2b779b01ace
+		summarizeBy: sum
+		sourceColumn: away_team_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column halftime_home
+		dataType: int64
+		formatString: 0
+		lineageTag: 458afa6e-5ae8-424a-a393-914da26faeba
+		summarizeBy: sum
+		sourceColumn: halftime_home
+
+		annotation SummarizationSetBy = Automatic
+
+	column halftime_away
+		dataType: int64
+		formatString: 0
+		lineageTag: c8d46977-2b8d-4662-a9ed-cc9824d7a851
+		summarizeBy: sum
+		sourceColumn: halftime_away
+
+		annotation SummarizationSetBy = Automatic
+
+	column fulltime_home
+		dataType: int64
+		formatString: 0
+		lineageTag: da232d9c-7efe-4c40-bb41-7f7efe757cab
+		summarizeBy: sum
+		sourceColumn: fulltime_home
+
+		annotation SummarizationSetBy = Automatic
+
+	column fulltime_away
+		dataType: int64
+		formatString: 0
+		lineageTag: a08ab860-fd84-4483-bd58-8bb27139d88e
+		summarizeBy: sum
+		sourceColumn: fulltime_away
+
+		annotation SummarizationSetBy = Automatic
+
+	column extratime_home
+		dataType: int64
+		formatString: 0
+		lineageTag: 6faed0bd-fb1b-4d72-84ec-c458b25282c9
+		summarizeBy: sum
+		sourceColumn: extratime_home
+
+		annotation SummarizationSetBy = Automatic
+
+	column extratime_away
+		dataType: int64
+		formatString: 0
+		lineageTag: b45f2309-dc65-4c49-b90a-6749e5c2230d
+		summarizeBy: sum
+		sourceColumn: extratime_away
+
+		annotation SummarizationSetBy = Automatic
+
+	column penalty_home
+		dataType: int64
+		formatString: 0
+		lineageTag: a1c1e069-e26c-43bd-bc7c-adcaad3ddbfb
+		summarizeBy: sum
+		sourceColumn: penalty_home
+
+		annotation SummarizationSetBy = Automatic
+
+	column penalty_away
+		dataType: int64
+		formatString: 0
+		lineageTag: d06d178d-f97c-4e1b-824f-db32af56ec93
+		summarizeBy: sum
+		sourceColumn: penalty_away
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fixtures = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("breakingsouth.database.windows.net", "sportsanalytics"),
+				  #"Navigation 1" = Source{[Schema = "football", Item = "fixtures"]}[Data],
+				  #"Choose columns" = Table.SelectColumns(#"Navigation 1", {"id", "date_id", "time_id", "league_id", "home_team_id", "away_team_id", "halftime_home", "halftime_away", "fulltime_home", "fulltime_away", "extratime_home", "extratime_away", "penalty_home", "penalty_away"})
+				in
+				  #"Choose columns"
+
+	annotation PBI_ResultType = Table
+
