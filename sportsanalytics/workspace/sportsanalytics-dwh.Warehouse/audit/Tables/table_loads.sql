@@ -5,7 +5,8 @@ CREATE TABLE [audit].[table_loads] (
     [loaded_at]     DATETIME2 (6)   NOT NULL,
     [rows_inserted] BIGINT          NULL,
     [rows_updated]  BIGINT          NULL,
-    [rows_deleted]  BIGINT          NULL
+    [rows_deleted]  BIGINT          NULL,
+    [dw_updated_at] DATETIME2 (6) NULL
 );
 
 

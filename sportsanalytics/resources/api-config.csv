@@ -1,0 +1,15 @@
+report;url;endpoint;headers;params;frequency;interval;active;stage
+leagues;https://v3.football.api-sports.io;leagues;;;year;1;0;1
+countries;https://v3.football.api-sports.io;countries;;;year;1;0;1
+seasons;https://v3.football.api-sports.io;leagues/seasons;;;year;1;0;1
+teams;https://v3.football.api-sports.io;teams;;country=england;year;1;0;2
+teams;https://v3.football.api-sports.io;teams;;country=italy;year;1;0;2
+teams;https://v3.football.api-sports.io;teams;;country=spain;year;1;0;2
+teams;https://v3.football.api-sports.io;teams;;country=germany;year;1;0;2
+teams;https://v3.football.api-sports.io;teams;;country=france;year;1;0;2
+matches;https://v3.football.api-sports.io;fixtures;;league=39&season=2024;week;1;0;2
+matches;https://v3.football.api-sports.io;fixtures;;league=140&season=2024;week;1;0;2
+matches;https://v3.football.api-sports.io;fixtures;;league=135&season=2024;week;1;0;2
+matches;https://v3.football.api-sports.io;fixtures;;league=78&season=2024;week;1;0;2
+matches;https://v3.football.api-sports.io;fixtures;;league=61&season=2024;week;1;0;2
+events;https://v3.football.api-sports.io;fixtures/events;;fixture=1223598;week;1;0;2
