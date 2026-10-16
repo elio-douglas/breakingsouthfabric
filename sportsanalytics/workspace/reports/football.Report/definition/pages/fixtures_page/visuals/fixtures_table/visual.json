@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "leagues_name_slicer",
+  "name": "fixtures_table",
   "position": {
-    "x": 329.51859909104616,
-    "y": 41.024403902901334,
-    "z": 2000,
-    "height": 84.92222633988041,
-    "width": 280.6125739926483,
-    "tabOrder": 2000
+    "x": 36.922707104295831,
+    "y": 223.99775643272804,
+    "z": 1000,
+    "height": 788.91517512845428,
+    "width": 1817.8279464348313,
+    "tabOrder": 1000
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
         "Values": {
@@ -20,41 +20,55 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "leagues"
+                      "Entity": "teams"
                     }
                   },
                   "Property": "name"
                 }
               },
-              "queryRef": "leagues.name",
-              "nativeQueryRef": "name",
-              "active": true
+              "queryRef": "teams.name",
+              "nativeQueryRef": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fixtures"
+                    }
+                  },
+                  "Property": "fulltime_home"
+                }
+              },
+              "queryRef": "Sum(fixtures.fulltime_home)",
+              "nativeQueryRef": "fulltime_home"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fixtures"
+                    }
+                  },
+                  "Property": "fulltime_away"
+                }
+              },
+              "queryRef": "Sum(fixtures.fulltime_away)",
+              "nativeQueryRef": "fulltime_away"
             }
           ]
         }
       }
     },
     "objects": {
-      "data": [
+      "values": [
         {
           "properties": {
-            "mode": {
+            "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "general": [
-        {
-          "properties": {
-            "selfFilterEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "'Arial'"
                 }
               }
             }

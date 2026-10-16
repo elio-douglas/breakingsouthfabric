@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "fixtures_table",
+  "name": "teams_name_slicer",
   "position": {
-    "x": 36.92270710429583,
-    "y": 223.99775643272804,
-    "z": 1000,
-    "height": 788.9151751284543,
-    "width": 1817.8279464348313,
-    "tabOrder": 1000
+    "x": 624.62963361836864,
+    "y": 41.024403902901334,
+    "z": 3000,
+    "height": 84.92222633988041,
+    "width": 280.61257399264832,
+    "tabOrder": 3000
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
@@ -27,48 +27,34 @@
                 }
               },
               "queryRef": "teams.name",
-              "nativeQueryRef": "name"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fixtures"
-                    }
-                  },
-                  "Property": "fulltime_home"
-                }
-              },
-              "queryRef": "Sum(fixtures.fulltime_home)",
-              "nativeQueryRef": "fulltime_home"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fixtures"
-                    }
-                  },
-                  "Property": "fulltime_away"
-                }
-              },
-              "queryRef": "Sum(fixtures.fulltime_away)",
-              "nativeQueryRef": "fulltime_away"
+              "nativeQueryRef": "name",
+              "active": true
             }
           ]
         }
       }
     },
     "objects": {
-      "values": [
+      "data": [
         {
           "properties": {
-            "fontFamily": {
+            "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Arial'"
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "selfFilterEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
