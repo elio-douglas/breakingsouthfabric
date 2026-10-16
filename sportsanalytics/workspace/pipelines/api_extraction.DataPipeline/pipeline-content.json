@@ -1,0 +1,174 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": {
+              "value": "SELECT\n\ta.report,\n\ta.url,\n\ta.endpoint,\n\ta.headers,\n\ta.params,\n\ta.frequency,\n\ta.interval\nFROM\n\taudit.api_configuration a\nWHERE\n\ta.active = 1\n\tAND a.stage = '@{pipeline().parameters.stage}'",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "DataWarehouseTable",
+            "typeProperties": {
+              "schema": "audit",
+              "table": "api_configuration"
+            },
+            "schema": [],
+            "linkedService": {
+              "name": "sportsanalytics-dwh",
+              "properties": {
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "artifactId": "d8bbb622-1f16-9a83-4eda-bb7fe13d0fab",
+                  "endpoint": "nkc3sqzhtfweramv3d7c4re6ja-z6qm4eqwcuauhaj54jrjaawvam.datawarehouse.fabric.microsoft.com",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get Tables",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('Get Tables').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "98c7a152-977a-bc0b-4281-406f40b91df7",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "project": {
+                    "value": {
+                      "value": "@pipeline().parameters.project",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "scope": {
+                    "value": {
+                      "value": "@pipeline().parameters.scope",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "report": {
+                    "value": {
+                      "value": "@item().report",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "url": {
+                    "value": {
+                      "value": "@item().url",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "endpoint": {
+                    "value": {
+                      "value": "@item().endpoint",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "headers": {
+                    "value": {
+                      "value": "@item().headers",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "params": {
+                    "value": {
+                      "value": "@item().params",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "frequency": {
+                    "value": {
+                      "value": "@item().frequency",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "interval": {
+                    "value": {
+                      "value": "@item().interval",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                },
+                "sessionTag": {
+                  "value": "@pipeline().parameters.session_tag",
+                  "type": "Expression"
+                }
+              },
+              "externalReferences": {
+                "connection": "e69cf425-66eb-4010-965a-94525c093d89"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Extract Data",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "Loop over Tables",
+        "dependsOn": [
+          {
+            "activity": "Get Tables",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "project": {
+        "type": "string"
+      },
+      "scope": {
+        "type": "string"
+      },
+      "stage": {
+        "type": "int"
+      },
+      "session_tag": {
+        "type": "string"
+      }
+    }
+  }
+}

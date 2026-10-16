@@ -1,0 +1,90 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "container": {
+              "value": "@pipeline().parameters.project",
+              "type": "Expression"
+            },
+            "scope": {
+              "value": "@pipeline().parameters.scope",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "ca3c0c20-df7a-8f74-4622-e18ec2892c65",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "cf98d7ab-0aae-4773-9cbf-f8f539319d19"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "api_configuration",
+        "dependsOn": []
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "project": {
+              "value": "@pipeline().parameters.project",
+              "type": "Expression"
+            },
+            "scope": {
+              "value": "@pipeline().parameters.scope",
+              "type": "Expression"
+            },
+            "stage": 1,
+            "session_tag": {
+              "value": "@utcNow()",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "fbc74c90-2db0-a74d-4894-c82d1e1833fe",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "cf98d7ab-0aae-4773-9cbf-f8f539319d19"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "s1_api_extraction",
+        "dependsOn": [
+          {
+            "activity": "api_configuration",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "project": {
+        "type": "string",
+        "defaultValue": "sportsanalytics"
+      },
+      "scope": {
+        "type": "string",
+        "defaultValue": "football"
+      }
+    }
+  }
+}
